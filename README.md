@@ -47,5 +47,6 @@ npm run lint
   success:true,
   msg:''
 }```
+3.每一个路由必须要有name这个字段。这在使用 keepalive的时候才有效。
 
 ### 开发范式

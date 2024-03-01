@@ -10,3 +10,18 @@
 export function hasProperty(obj, propertyName) {
   return Object.prototype.hasOwnProperty.call(obj, propertyName);
 }
+
+/**
+ * 深度克隆对象
+ * @param {*} data 
+ * @returns 
+ * 这个clone 有一些限制，不过在业务组件中使用还是基本OK的。
+ * 而且应该比递归 copy 要快一些。
+ */
+export function deepClone(data){
+  try {
+    return JSON.parse(JSON.stringify(data));
+  } catch (error) {
+    throw new Error('deepClone error');
+  }
+}

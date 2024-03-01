@@ -8,19 +8,32 @@ import { defineStore } from 'pinia';
  */
 export const useRouteStore = defineStore('routeStore', {
 	state: () => ({
+    // 所有的路由地址
 		routesList: null,
+    // 一级路由的key
     key: 0,
+    // keep-alive的缓存
+    caches: new Set(),
 	}),
   getters: {
-    $key: (state) => state.key
+    key: (state) => state.key,
+    caches: state => state.caches
   },
 	actions: {
 		async setRoutes(data) {
 			this.routesList = data;
 		},
     refresh() {
-      console.log(this.key);
       this.key = this.key + 1;
+    },
+    addCaches(routeName){
+      this.caches.add(routeName)
+    },
+    removeCaches(routeName){
+      this.caches.delete(routeName)
+    },
+    cleanCaches(){
+      this.caches.clear()
     }
 	},
 });
