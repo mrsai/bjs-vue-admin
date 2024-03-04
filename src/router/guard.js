@@ -3,7 +3,6 @@
  */
 import { useRouteStore } from '@/stores/route'
 
-const routeStore = useRouteStore()
 
 export const initRouteGuard = (router) => {
   router.beforeEach((to, from, next) => {
@@ -21,6 +20,7 @@ export const initRouteGuard = (router) => {
     if (to.meta.cache) {
       const componentName = to.matched.at(-1)?.components?.default.name
       if (componentName) {
+        const routeStore = useRouteStore()
         routeStore.addCaches(componentName)
       } else {
         console.warn('请为该组件设置 name 属性，否则无法进行缓存')

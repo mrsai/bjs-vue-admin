@@ -1,18 +1,16 @@
 <script setup>
-import { provide } from 'vue'
-import { useKey } from '@/utils/hooks/useKey'
-import { useRouter } from 'vue-router';
+import { readonly } from 'vue'
 
-// 注册一个全局可重新加载页面的函数
-const globalKey = useKey()
-provide('globalKey', {
-  globalReload: globalKey.refreshKey,
+const elementPlusConfig  = readonly({
+  size: 'small',
+  zIndex: 2000
 })
 
-console.log('useRouter', useRouter().getRoutes())
 </script>
 <template>
-  <RouterView :key=" globalKey.$key.value"></RouterView>
+  <el-config-provider :size="elementPlusConfig.size" :z-index="elementPlusConfig.zIndex">
+    <router-view></router-view>
+  </el-config-provider>
 </template>
 
 <style scoped>

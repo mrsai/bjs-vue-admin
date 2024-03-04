@@ -14,6 +14,9 @@
 </template>
 <script setup name="Main">
 import { RouterView } from 'vue-router'
+import { useKey } from '@/utils/hooks/useKey';
+
+const globalKey = useKey()
 
 </script>
 <style lang="scss" scoped></style>
