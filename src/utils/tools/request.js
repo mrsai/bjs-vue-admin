@@ -1,8 +1,9 @@
 // https://axios-http.com/zh/docs/api_intro
 
 import axios from 'axios'
-import { hasProperty } from '@/utils/tools'
-// import {useUserStore} from '/@/store/user';
+import { variate } from '@/utils/tools'
+import { ElMessage } from 'element-plus'
+import { useUserStore } from '@/stores/user'
 
 // 生成唯一的请求标识
 class AbortRequest {
@@ -36,7 +37,7 @@ class AbortRequest {
 }
 
 // 处理 http 请求错误
-const errorMessage = (error) => {
+const httpErrorMessage = (error) => {
   let message = ''
   switch (error.response?.status) {
     case 400:
@@ -58,15 +59,25 @@ const errorMessage = (error) => {
       message = '服务器错误！'
       break
     default:
-      message = error.message
+      message = error.message || '请求失败！'
       break
   }
   return message
 }
 
+// 服务返回的错误信息
+const serverErrorMessage = {
+  notMatched: '返回数据格式不符合预先约定！',
+  default: '请求数据失败！'
+}
+
 //验证返回的数据格式是否符合要求
 const verifyResponseFormat = (data = {}) => {
-  return hasProperty(data, 'success') && hasProperty(data, 'data') && hasProperty(data, 'msg')
+  return (
+    variate.hasProperty(data, 'success') &&
+    variate.hasProperty(data, 'data') &&
+    variate.hasProperty(data, 'msg')
+  )
 }
 
 export class Server {
@@ -128,8 +139,7 @@ const abortRequest = new AbortRequest()
 
 // 增加请求拦截，添加 token
 server.addRequestInterceptor((config) => {
-  // const {getToken} = useUserStore();
-  const token = ''
+  const { token } = useUserStore()
   config.headers && (config.headers['Authorization'] = `JWT ${token}`)
   abortRequest.add(config)
   return config
@@ -144,7 +154,15 @@ server.addResponseInterceptor((response) => {
 // 返回约定的数据格式的验证
 server.addResponseInterceptor((response) => {
   if (response.data && !verifyResponseFormat(response.data)) {
-    throw new Error('返回数据格式不符合预先约定！')
+    throw new Error(serverErrorMessage.notMatched)
+  }
+  return response
+})
+
+// 处理业务失败的提示信息
+server.addResponseInterceptor((response) => {
+  if (response.data && !response.data.success) {
+    ElMessage.error(response.data.msg || serverErrorMessage.default)
   }
   return response
 })
@@ -152,7 +170,7 @@ server.addResponseInterceptor((response) => {
 // 错误处理
 server.addErrorInterceptor((err) => {
   abortRequest.remove(err.config)
-  errorMessage(err)
+  ElMessage.error(httpErrorMessage(err))
   return err
 })
 

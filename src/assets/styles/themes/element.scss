@@ -1,4 +1,4 @@
-$--colors: (
+$light--colors: (
   "primary": (
     "base": #80004d,
   ),
@@ -19,11 +19,5 @@ $--colors: (
   ),
 );
 
-@forward "element-plus/theme-chalk/src/common/var.scss" with (
-  // do not use same name, it will override.
-  $colors: $--colors,
-  $button-padding-horizontal: ("default": 50px)
+$dark--colors: (
 );
-
-// custom dark variables
-@use "./dark.scss";

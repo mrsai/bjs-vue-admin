@@ -5,12 +5,11 @@ const serviceRoutes = [
   {
     path: '/service',
     name: 'service',
-    redirect: '/service/log',
-    component: () => import('@/layout/index.vue'),
     meta: {
-      title: '日志管理',
-      icon: 'ic:baseline-assignment',
-      privilege: {
+      title: '日志',
+      icon: 'i-mdi:database-clock',
+      cache: false,
+      auth: {
       },
     },
     children: [

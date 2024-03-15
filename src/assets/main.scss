@@ -1,1 +1,21 @@
-@use "element-plus/theme-chalk/src/dark/css-vars.scss" as *;
+@use 'element-plus/theme-chalk/src/dark/css-vars.scss' as *;
+
+body,
+html {
+  margin: 0;
+  overflow-x: hidden;
+}
+
+:root {
+  --sidebar-width: 256px;
+  --sidebar-collapsed-width: 64px;
+  --sidebar-expanded-width: 256px;
+  --topbar-height: 110px;
+}
+
+#app {
+  .el-menu {
+    border-right: none;
+    background-color: transparent;
+  }
+}

@@ -24,10 +24,15 @@ export default defineConfig({
     presetIcons(),
     presetTypography(),
     presetWebFonts({
+      collections: {
+      },
       fonts: {
         // ...
       }
     })
+  ],
+  content: [
+    // ...
   ],
   transformers: [transformerDirectives(), transformerVariantGroup()]
 })

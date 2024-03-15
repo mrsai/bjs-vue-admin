@@ -4,7 +4,7 @@
   </div>
 </template>
 <script setup>
-console.log("AboutView component setup");
+
 </script>
 <style>
 @media (min-width: 1024px) {

@@ -2,48 +2,79 @@
 const logRoutes = [{
   path: '/service/log',
   name: 'log',
-  redirect: '/service/log/login',
-  component: () => import('@/layout/main.vue'),
+  component: () => import('@/views/service/logs/index.vue'),
   meta: {
-    title: '日志管理',
+    title: '日志列表',
     icon: 'ic:baseline-assignment',
-    privilege: {
-    },
+    auth: {},
     order: 2,
   },
   children: [
     {
-      path: 'login',
+      path: '/service/log/login',
       name: 'log.login',
-      component: () => import('@/views/HomeView.vue'),
+      component: () => import('@/views/service/logs/login/index.vue'),
       meta: {
         title: '登录日志',
         parentRoute: '',
         breadCrumbs: [],
-        privilege: {
+        cache: true,
+        auth: {
+          access: {
+            txt: '访问',
+            val: true,
+          },
         },
       },
       children: [
         {
-          path: '/log/login/:id',
+          path: '/service/log/login/detail',
           name: 'log.login.detail',
+          component: () => import('@/views/service/logs/login/detail.vue'),
           meta: {
-            hideMenu: true,
-            title: '明细',
-            privilege: {
+            title: '登录日志详情',
+            parentRoute: '',
+            breadCrumbs: [],
+            cache: true,
+            auth: {
+              access: {
+                txt: '访问',
+                val: false,
+              },
             },
           },
+          children: [
+            {
+              path: '/service/log/login/detail/:id',
+              name: 'log.logout.detail1',
+              component: () => import('@/views/service/logs/login/detail.vue'),
+              meta: {
+                title: '登出日志详情',
+                parentRoute: '',
+                breadCrumbs: [],
+                cache: true,
+                activePath: '/service/log/login/detail/:id',
+                invisible: false,
+                auth: {
+                  access: {
+                    txt: '访问',
+                    val: false,
+                  },
+                },
+              },
+            },
+          ],
         },
       ],
     },
     {
-      path: 'action',
+      path: '/service/log/logout',
       name: 'log.action',
+      component: () => import('@/views/service/logs/logout/index.vue'),
       meta: {
         hideMenu: false,
-        title: '操作日志',
-        privilege: {
-        },
+        title: '登出日志',
+        auth: {},
       },
     },
   ],

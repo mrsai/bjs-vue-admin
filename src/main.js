@@ -1,9 +1,6 @@
 import './assets/main.scss'
 import 'virtual:uno.css'
-// import 'element-plus/theme-chalk/dark/css-vars.css'
-// import 'element-plus/theme-chalk/dark/css-vars.css'
-// import 'element-plus/theme-chalk/dark/css-vars.css'
-// import '@/assets/styles/dark/css-vars.css'
+import '@/utils/plugins/preload-icons'
 
 
 import App from './App.vue'

@@ -8,11 +8,6 @@ defineProps({
   }
 })
 
-console.log("HelloWorld component setup");
-onMounted(()=>{
-  console.log('HelloWorld component mounted');
-})
-
 const { globalReload } = inject('globalKey');
 </script>
 

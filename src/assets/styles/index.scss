@@ -1,0 +1,10 @@
+@use "./themes/element";
+
+@forward "element-plus/theme-chalk/src/common/var.scss" with (
+  // do not use same name, it will override.
+  $colors: element.$light--colors,
+  $button-padding-horizontal: ("default": 50px)
+);
+
+// custom dark variables
+@use "./dark.scss";

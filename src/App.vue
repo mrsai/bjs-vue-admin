@@ -2,7 +2,7 @@
 import { readonly } from 'vue'
 
 const elementPlusConfig  = readonly({
-  size: 'small',
+  size: 'default',
   zIndex: 2000
 })
 

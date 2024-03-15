@@ -16,16 +16,18 @@ export default defineConfig({
     vueJsx(),
     UnoCSS(),
     AutoImport({
-      resolvers: [ElementPlusResolver()],
+      resolvers: [ElementPlusResolver()]
     }),
     Components({
-      resolvers: [ElementPlusResolver({
-        importStyle: 'sass',   
-      })],
+      resolvers: [
+        ElementPlusResolver({
+          importStyle: 'sass'
+        })
+      ]
     }),
     ElementPlus({
-      useSource: true,
-    }),
+      useSource: true
+    })
   ],
   resolve: {
     alias: {
@@ -35,8 +37,21 @@ export default defineConfig({
   css: {
     preprocessorOptions: {
       scss: {
-        additionalData: `@use "@/assets/styles/element/index.scss" as *;`,
-      },
-    },
+        additionalData: `@use "@/assets/styles/index.scss" as *;`
+      }
+    }
+  },
+  server: {
+    host: '0.0.0.0',
+    port: '9527',
+    open: true,
+    hmr: true,
+    proxy: {
+      '/api': {
+        target: 'https://mock.apifox.com/m1/1248209-0-default',
+        ws: true,
+        changeOrigin: true
+      }
+    }
   }
 })
