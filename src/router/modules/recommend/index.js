@@ -5,9 +5,7 @@ const recommendRoutes = [
     meta: {
       title: '推荐',
       icon: 'i-mdi:palette-advanced',
-      auth: {
-        access: {}
-      }
+      auth: {}
     },
     children: [
       {

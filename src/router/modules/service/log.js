@@ -80,6 +80,14 @@ const logRoutes = [
             access: {
               txt: '访问',
               val: true
+            },
+            edit: {
+              txt: '编辑',
+              val: false
+            },
+            del: {
+              txt: '删除',
+              val: false
             }
           },
           invisible: true

@@ -25,15 +25,16 @@ export const useRouteStore = defineStore('routeStore', () => {
 
   /**
    * 初始化权限路由
+   * 这一系列的函数执行顺序不可以改变，有些地方没有做深度拷贝
    * @returns
    */
   function generateAccessRoutes() {
     try {
-      // 把权限合并到路由上
-      const routers = mergeAccessRouters(dynamicRoutes)
-
       // 生成一份全量的路由权限的 tree 结构，为自定义角色分配权限的时候做处理
-      routesRaw.value = deepClone(routers)
+      routesRaw.value = deepClone(dynamicRoutes)
+
+      // 把权限合并到路由上
+      const routers = mergeAccessRouters(dynamicRoutes, permission.value)
 
       // 过滤掉无权限的路由地址，找到需要缓存的路由名字和第一个有权限访问的菜单
       const { accessRoutes, firstAccessible, cached } = filterNoAccessRouters(routers)
@@ -75,7 +76,7 @@ export const useRouteStore = defineStore('routeStore', () => {
    * @param {*} accessRoutes
    * @returns
    */
-  function mergeAccessRouters(routers) {
+  function mergeAccessRouters(routers, permission) {
     const queue = [...routers]
     while (queue.length) {
       let node = queue.shift()
@@ -85,7 +86,9 @@ export const useRouteStore = defineStore('routeStore', () => {
       }
 
       if (node.children) {
-        queue.concat(node.children)
+        for (let i = 0; i < node.children.length; i++) {
+          queue.push(node.children[i])
+        }
       }
     }
     return routers
@@ -205,6 +208,7 @@ export const useRouteStore = defineStore('routeStore', () => {
     accessible,
     fetchPermission,
     generateAccessRoutes,
-    firstAccessibleRoute
+    firstAccessibleRoute,
+    mergeAccessRouters
   }
 })
