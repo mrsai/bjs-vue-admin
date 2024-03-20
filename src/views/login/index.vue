@@ -24,7 +24,7 @@ import { ref, readonly } from 'vue'
 import { useForm } from '@/utils/hooks/useForm'
 import { useUserStore } from '@/stores/user'
 import { useRoutes } from '@/utils/hooks/useRouters'
-import { set } from '@vueuse/core';
+import { set } from '@vueuse/core'
 
 const { login } = useUserStore()
 const { redirectToDefault } = useRoutes()

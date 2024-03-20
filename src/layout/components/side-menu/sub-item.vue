@@ -15,7 +15,7 @@
       <el-menu-item :index="child.path" :key="child.path">
         <template v-if="!child.meta.isLink || (child.meta.isLink && child.meta.isIframe)">
           <div :class="child.meta.icon" class="text-lg shrink-0 mr-3" />
-          <span>{{ child.meta.title }}</span> 
+          <span>{{ child.meta.title }}</span>
         </template>
         <template v-else>
           <a class="w-100" @click.prevent="onALinkClick(child)">

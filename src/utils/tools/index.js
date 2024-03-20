@@ -112,7 +112,7 @@ stylesVar.get = function (keys, el = document.documentElement) {
   }
 }
 stylesVar.set = function (props, el = document.documentElement) {
-  if(variate.isObject(props)) {
+  if (variate.isObject(props)) {
     Object.keys(props).forEach((key) => {
       el.style.setProperty(key, props[key])
     })

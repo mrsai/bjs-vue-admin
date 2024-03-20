@@ -7,10 +7,9 @@
  * 唯一性保证，一般增加在字符串前面，保证其变量名称的唯一性
  * 可能还是用不着
  */
-export const Profix = "_bjs_";
+export const Profix = '_bjs_'
 
-
-export const AppName = "BJS";
+export const AppName = 'BJS'
 
 /**
  * 主题
@@ -18,9 +17,9 @@ export const AppName = "BJS";
  * @property {string} light 亮色
  */
 export const Theme = {
-  darkMode: "dark",
-  lightMode: "light",
-};
+  darkMode: 'dark',
+  lightMode: 'light'
+}
 
 /**
  * 布局
@@ -28,8 +27,8 @@ export const Theme = {
  * @property {string} TopBottom 上下布局
  */
 export const Layout = {
-  leftToRight: "left-right",
-  topToBottom: "top-bottom",
+  leftToRight: 'left-right',
+  topToBottom: 'top-bottom'
 }
 
 /**
@@ -38,6 +37,6 @@ export const Layout = {
  * @property {string} En 美英
  */
 export const Lang = {
-  CN: "zh-cn",
-  En: "en-us",
+  CN: 'zh-cn',
+  En: 'en-us'
 }

@@ -1,5 +1,4 @@
-
-import logRoutes from "@/router/modules/service/log"
+import logRoutes from '@/router/modules/service/log'
 
 const serviceRoutes = [
   {
@@ -9,12 +8,9 @@ const serviceRoutes = [
       title: '日志',
       icon: 'i-mdi:database-clock',
       cache: false,
-      auth: {
-      },
+      auth: {}
     },
-    children: [
-      ...logRoutes
-    ],
-  },
+    children: [...logRoutes]
+  }
 ]
 export default serviceRoutes

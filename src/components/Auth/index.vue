@@ -1,14 +1,14 @@
 <script setup lang="ts">
 import { useAuth } from '@/utils/hooks/useAuth'
 defineOptions({
-  name: 'AuthController',
+  name: 'AuthController'
 })
 
 const props = defineProps({
   value: {
     type: String,
-    required: true,
-  },
+    required: true
+  }
 })
 
 function check() {

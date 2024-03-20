@@ -40,7 +40,7 @@ const useUserStore = defineStore(
     // 登出
     async function logout() {
       try {
-        await request.post('/api/logout')
+        // await request.post('/api/logout')
         userInfo.value = null
         resetToken()
       } catch (error) {

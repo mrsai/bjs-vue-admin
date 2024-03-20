@@ -17,6 +17,13 @@ export const createRouteGuard = (router) => {
 
     const isToLoginPage = to.name === routerNames.login
     const isToRootPage = to.name === routerNames.root
+    const isToNotAllowed = to.name === routerNames.notAllowed
+    const isNotFound = to.name === routerNames.notFound
+    // 还差 500 的判断
+
+    if (isNotFound || isToNotAllowed) {
+      return next()
+    }
 
     if (!userStore.isLogin) {
       if (isToLoginPage) {
@@ -42,11 +49,7 @@ export const createRouteGuard = (router) => {
       if (isToLoginPage || isToRootPage) {
         return next(routerStore.firstAccessibleRoute)
       }
-      // 这个和动态生成路由二选一
-      if (routerStore.accessible(to)) {
-        return next()
-      }
-      return next({ name: routerNames.notAllowed })
+      return next()
     }
 
     try {

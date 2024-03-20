@@ -1,11 +1,9 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import staticRoutes from '@/router/static'
 
-
 import { createRouteGuard } from './guard'
 // import { validataRouterName } from '@/utils/plugins/verification.plugin'
 // import { isDev } from '@/utils/tools/index'
-
 
 // if(isDev() && !validataRouterName(staticRoutes)){
 //   console.error('路由组件中有未命名的路由，请检查！')

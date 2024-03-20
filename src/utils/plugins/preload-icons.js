@@ -5,7 +5,8 @@
  * 解决方案h ttps://www.whidy.net/unocss-dynamic-icon-not-show
  */
 export default [
+  'i-mdi:home',
   'i-mdi:palette-advanced',
   'i-mdi:database-clock',
-  'i-mdi:book-open-page-variant',
+  'i-mdi:book-open-page-variant'
 ]

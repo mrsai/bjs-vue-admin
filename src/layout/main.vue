@@ -1,8 +1,6 @@
 <template>
   <div class="layout full">
-    <h1>
-      I am Main Page
-    </h1>
+    <h1>I am Main Page</h1>
     <RouterView v-slot="{ Component, route }">
       <Transition name="slide-right" mode="out-in" appear>
         <KeepAlive>
@@ -12,6 +10,5 @@
     </RouterView>
   </div>
 </template>
-<script setup name="Main">
-</script>
+<script setup name="Main"></script>
 <style lang="scss" scoped></style>

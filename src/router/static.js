@@ -12,8 +12,9 @@ const staticRoutes = [
     name: 'Root',
     component: () => import('@/layout/root.vue'),
     meta: {
-      title: 'Root',
-    },
+      icon: 'i-mdi:home',
+      title: '首页'
+    }
   },
   {
     path: '/login',
@@ -30,8 +31,7 @@ const staticRoutes = [
     meta: {
       title: '禁止访问'
     }
-  },
-  
+  }
 ]
 
 const notFoundRoutes = {
@@ -44,7 +44,6 @@ const notFoundRoutes = {
     hideMenu: true
   }
 }
-
 
 export default staticRoutes
 export { routerNames, notFoundRoutes }

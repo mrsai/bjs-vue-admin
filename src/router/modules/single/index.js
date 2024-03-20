@@ -1,4 +1,3 @@
-
 const singleRoutes = [
   {
     path: '/single',
@@ -7,6 +6,7 @@ const singleRoutes = [
     meta: {
       title: '单页面',
       icon: 'i-mdi:book-open-page-variant',
+      invisible: false
     }
   }
 ]

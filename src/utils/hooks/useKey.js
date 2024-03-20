@@ -11,13 +11,13 @@ import { ref } from 'vue'
   <div c-on:click="routeKey.refreshKey">clickme for refresh route {{ routeKey.$key }}</div>
  */
 export function useKey() {
-  const $key = ref(0);
-  const refreshKey = ()=> {
+  const $key = ref(0)
+  const refreshKey = () => {
     $key.value = $key.value + 1
   }
 
   return {
     $key,
-    refreshKey,
+    refreshKey
   }
 }

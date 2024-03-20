@@ -1,10 +1,8 @@
 <template>
-  <div class='recommend-list'>
-    RecommendList
-  </div>
+  <div class="recommend-list">RecommendList</div>
 </template>
-<script setup name='RecommendList'>
-</script>
-<style lang='scss' scoped>
-.recommend-list{}
+<script setup name="RecommendList"></script>
+<style lang="scss" scoped>
+.recommend-list {
+}
 </style>

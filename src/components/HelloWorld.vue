@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted,inject } from 'vue';
+import { onMounted, inject } from 'vue'
 
 defineProps({
   msg: {
@@ -8,7 +8,7 @@ defineProps({
   }
 })
 
-const { globalReload } = inject('globalKey');
+const { globalReload } = inject('globalKey')
 </script>
 
 <template>

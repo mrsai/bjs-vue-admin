@@ -1,5 +1,6 @@
 <template>
   <el-menu
+    router
     :collapse="settings.isCollapse"
     :collapse-transition="false"
     :default-active="$route.meta.activePath || $route.path"
@@ -31,5 +32,4 @@ import SubItem from './sub-item.vue'
 
 const { menus } = useRouteStore()
 const { settings } = useAppStore()
-
 </script>

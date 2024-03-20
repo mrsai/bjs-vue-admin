@@ -1,7 +1,7 @@
 <template>
   <div class="countdown">
     <div class="send-code" v-if="status" @click.prevent.stop="sendCode">发送验证码</div>
-    <div class="send-code" v-else>{{count}}秒后重试</div>
+    <div class="send-code" v-else>{{ count }}秒后重试</div>
     <div></div>
   </div>
 </template>
@@ -75,9 +75,7 @@ export default {
             this.doSend()
           })
           .catch(() => {})
-
       } else {
-
         this.doSend()
       }
     },
@@ -100,7 +98,7 @@ export default {
           if (this.count <= 0) {
             this.status = true
             clearInterval(timer)
-            timer = null;
+            timer = null
             this.count = 60
           }
         }, 1000)
